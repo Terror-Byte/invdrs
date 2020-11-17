@@ -2,7 +2,8 @@ extends Node2D
 
 signal hit
 
-export (PackedScene) var Bullet
+#export (PackedScene) var Bullet
+var Bullet = preload("res://Scenes/Bullet.tscn")
 
 export var speed = 400
 var screen_size
@@ -18,7 +19,6 @@ func _process(delta):
 	var velocity = Vector2()
 	
 	if Input.is_action_just_pressed("ui_accept"):
-		# Spawn bullet
 		spawn_bullet()
 	
 	if Input.is_action_pressed("ui_right"):
@@ -34,10 +34,6 @@ func _process(delta):
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
-#func _input(event):
-#	pass
-
-
 
 func spawn_bullet():
 	var bullet = Bullet.instance()
@@ -46,7 +42,6 @@ func spawn_bullet():
 	bullet.set_direction("up")
 	bullet.z_index = z_index - 1
 	get_parent().add_child(bullet)
-	#print("Bullet fired")
 	# TODO Play sound
 
 

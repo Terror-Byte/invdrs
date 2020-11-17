@@ -1,14 +1,39 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5, 300 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 512, 40 )
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 512, 550 )
 
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
+[node name="Enemy1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 512, 50 )
-Bullet = ExtResource( 3 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 40.0627, 97.1937 )
+
+[node name="MapEdgeLeft" type="Area2D" parent="."]
+position = Vector2( 5, 300 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapEdgeLeft"]
+shape = SubResource( 1 )
+
+[node name="MapEdgeRight" type="Area2D" parent="."]
+position = Vector2( 1019, 300 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapEdgeRight"]
+shape = SubResource( 1 )
+
+[node name="MapBottom" type="Area2D" parent="."]
+position = Vector2( 512, 560 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapBottom"]
+shape = SubResource( 2 )
