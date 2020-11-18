@@ -5,7 +5,7 @@ signal collided_with_edge
 #export (PackedScene) var Bullet
 var Bullet = preload("res://Scenes/Bullet.tscn")
 
-var can_fire = true
+var can_fire = false
 var left_dir = "left"
 var right_dir = "right"
 var direction = left_dir
@@ -17,7 +17,7 @@ var vertical_move_distance = 40
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	$MoveTimer.start()
+	#$MoveTimer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,8 +48,8 @@ func _on_Enemy_area_entered(area):
 	if parent_name == "PlayerBullet":
 		queue_free()
 	elif collider_name == "MapEdgeLeft" or collider_name == "MapEdgeRight":
-		#emit_signal("collided_with_edge")
-		get_tree().call_group("enemies", "collided_with_edge")
+		emit_signal("collided_with_edge")
+		#get_tree().call_group("enemies", "collided_with_edge")
 	elif collider_name == "MapBottom":
 		# Trigger end of game
 		# TODO Do we do this on the player, or on some game controller??
@@ -71,7 +71,7 @@ func _on_FireTimer_timeout():
 	can_fire = true
 
 
-func _on_Enemy_collided_with_edge():
+#func _on_Enemy_collided_with_edge():
 	#print("Enemy collided with edge!")
 	# TODO:
 	# Move down a row (move like, the distancce equivalent to the length of an enemy
@@ -82,15 +82,33 @@ func _on_Enemy_collided_with_edge():
 	#	direction = right_dir
 	#elif direction == right_dir:
 	#	direction = left_dir
-	pass
+#	pass
 
-func collided_with_edge():
-	move_down = true
-	if direction == left_dir:
-		direction = right_dir
-	elif direction == right_dir:
-		direction = left_dir
+#func collided_with_edge():
+#	move_down = true
+#	if direction == left_dir:
+#		direction = right_dir
+#	elif direction == right_dir:
+#		direction = left_dir
 
+func move(move_direction):
+	#if move_down == true:
+	#	position.y += vertical_move_distance
+	#	move_down = false
+	#else:
+	#	if move_direction == left_dir:
+	#		position.x -= horizontal_move_distance
+	#	elif move_direction == right_dir:
+	#		position.x += horizontal_move_distance
+	if move_direction == left_dir:
+		position.x -= horizontal_move_distance
+	elif move_direction == right_dir:
+		position.x += horizontal_move_distance
+
+func move_down():
+	position.y += vertical_move_distance
+
+# OBSOLETE
 func _on_MoveTimer_timeout():
 	if move_down == true:
 		position.y += vertical_move_distance

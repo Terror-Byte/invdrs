@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 300 )
@@ -10,15 +11,35 @@ extents = Vector2( 5, 300 )
 extents = Vector2( 512, 40 )
 
 [node name="Main" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 512, 550 )
 
-[node name="Enemy1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 512, 50 )
+[node name="Enemy1" parent="." groups=[
+"row_4",
+] instance=ExtResource( 2 )]
+position = Vector2( 515, 85 )
 
-[node name="Enemy2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 40.0627, 97.1937 )
+[node name="Enemy2" parent="." groups=[
+"row_3",
+] instance=ExtResource( 2 )]
+position = Vector2( 515, 140 )
+
+[node name="Enemy3" parent="." groups=[
+"row_2",
+] instance=ExtResource( 2 )]
+position = Vector2( 515, 195 )
+
+[node name="Enemy4" parent="." groups=[
+"row_1",
+] instance=ExtResource( 2 )]
+position = Vector2( 515.944, 250 )
+
+[node name="Enemy5" parent="." groups=[
+"row_0",
+] instance=ExtResource( 2 )]
+position = Vector2( 515, 305 )
 
 [node name="MapEdgeLeft" type="Area2D" parent="."]
 position = Vector2( 5, 300 )
@@ -37,3 +58,12 @@ position = Vector2( 512, 560 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapBottom"]
 shape = SubResource( 2 )
+
+[node name="MoveTimerLong" type="Timer" parent="."]
+one_shot = true
+
+[node name="MoveTimerShort" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+[connection signal="timeout" from="MoveTimerLong" to="." method="_on_MoveTimerLong_timeout"]
+[connection signal="timeout" from="MoveTimerShort" to="." method="_on_MoveTimerShort_timeout"]

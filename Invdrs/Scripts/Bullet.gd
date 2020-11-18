@@ -21,7 +21,7 @@ func set_direction(dir):
 
 
 func _on_Bullet_area_entered(area):
-	if (direction == "up") && (area.get_parent().get_name() == "Enemy"):
+	if (direction == "up") && ("Enemy" in area.get_parent().get_name()):
 		# Bullet has been fired by the player and has hit an enemy
 		queue_free()
 	elif (direction == "down") && (area.get_parent().get_name() == "Player"):
