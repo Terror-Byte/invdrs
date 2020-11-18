@@ -42,18 +42,19 @@ func _on_Enemy_body_entered(body):
 func _on_Enemy_area_entered(area):
 	#print(area.get_parent().get_name())
 	var parent_name = area.get_parent().get_name()
-	var collider_name = area.get_name()
-	print("Enemy has collided with: " + collider_name)
+	#var collider_name = area.get_name()
+	#print("Enemy has collided with: " + collider_name)
+	print("Enemy has collided with: " + parent_name)
 	
-	if parent_name == "PlayerBullet":
+	if "PlayerBullet" in parent_name:
 		queue_free()
-	elif collider_name == "MapEdgeLeft" or collider_name == "MapEdgeRight":
-		emit_signal("collided_with_edge")
-		#get_tree().call_group("enemies", "collided_with_edge")
-	elif collider_name == "MapBottom":
-		# Trigger end of game
+	#elif collider_name == "MapEdgeLeft" or collider_name == "MapEdgeRight":
+	#	emit_signal("collided_with_edge")
+	#	#get_tree().call_group("enemies", "collided_with_edge")
+	#elif collider_name == "MapBottom":
+	#	# Trigger end of game
 		# TODO Do we do this on the player, or on some game controller??
-		print("Enemy has hit the bottom!")
+#		print("Enemy has hit the bottom!")
 
 
 func spawn_bullet():

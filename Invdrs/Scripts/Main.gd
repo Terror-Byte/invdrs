@@ -12,12 +12,15 @@ var move_direction = left_dir
 var move_down = false
 var switch_dir = false
 
+var enemies_at_left_edge = 0
+var enemies_at_right_edge = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	for enemy in enemies:
-		enemy.connect("collided_with_edge", self, "_on_Enemy_hit_side")
-	print("Enemies connected!")
+	#var enemies = get_tree().get_nodes_in_group("enemies")
+	#for enemy in enemies:
+	#	enemy.connect("collided_with_edge", self, "_on_Enemy_hit_side")
+	#print("Enemies connected!")
 	$MoveTimerLong.start()
 
 
@@ -47,6 +50,8 @@ func _on_MoveTimerShort_timeout():
 	current_row += 1
 	if current_row >= 5:
 		$MoveTimerLong.start()
+		if move_down == true:
+			move_down = false
 	else:
 		$MoveTimerShort.start()
 
@@ -61,10 +66,44 @@ func move_enemies_in_row(row):
 			else:
 				enemy.move(move_direction)
 
-func _on_Enemy_hit_side():
-	#move_down = true
-	#if direction == left_dir:
+
+#func _on_Enemy_hit_side():
+#	#move_down = true
+#	#if direction == left_dir:
 	#	direction = right_dir
 	#elif direction == right_dir:
 	#	direction = left_dir
-	switch_dir = true
+#	switch_dir = true
+
+
+func _on_MapEdgeLeft_area_entered(area):
+	if not ("Enemy" in area.get_parent().get_name()):
+		return
+	
+	enemies_at_left_edge += 1
+	if enemies_at_left_edge == 1:
+		switch_dir = true
+
+func _on_MapEdgeLeft_area_exited(area):
+	if not ("Enemy" in area.get_parent().get_name()):
+		return
+		
+	if enemies_at_left_edge > 0:
+		enemies_at_left_edge -= 1
+
+
+func _on_MapEdgeRight_area_entered(area):
+	if not ("Enemy" in area.get_parent().get_name()):
+		return
+		
+	enemies_at_right_edge += 1
+	if enemies_at_right_edge == 1:
+		switch_dir = true
+
+
+func _on_MapEdgeRight_area_exited(area):
+	if not ("Enemy" in area.get_parent().get_name()):
+		return
+		
+	if enemies_at_right_edge > 0:
+		enemies_at_right_edge -= 1
