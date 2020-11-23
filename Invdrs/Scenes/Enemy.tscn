@@ -10,6 +10,7 @@ height = 6.66472
 [node name="Enemy" type="Node2D" groups=[
 "enemies",
 ]]
+scale = Vector2( 0.75, 0.75 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

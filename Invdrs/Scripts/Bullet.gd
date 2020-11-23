@@ -27,3 +27,5 @@ func _on_Bullet_area_entered(area):
 	elif (direction == "down") && (area.get_parent().get_name() == "Player"):
 		# Bullet has been fired by an enemy and has hit the player OR a barricade
 		queue_free()
+	elif "Base" in area.get_name():
+		queue_free()
