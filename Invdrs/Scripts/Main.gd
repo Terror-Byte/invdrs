@@ -119,11 +119,9 @@ func _on_MapEdgeRight_area_exited(area):
 
 func _on_FireTimer_timeout():
 	var enemies = get_tree().get_nodes_in_group("enemies")
-	var enemy_index = randi() % enemies.size()
-	
-	if enemy_index == 0:
+	if enemies.size() == 0:
 		return
-	
+	var enemy_index = randi() % enemies.size()	
 	enemies[enemy_index].fire()
 	$FireTimer.start()
 
