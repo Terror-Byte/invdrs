@@ -33,15 +33,12 @@ position = Vector2( -21, -21 )
 
 [node name="BaseBlock16" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -42 )
-Health = 3
 
 [node name="BaseBlock17" parent="." instance=ExtResource( 1 )]
 position = Vector2( 21, -42 )
-Health = 3
 
 [node name="BaseBlock18" parent="." instance=ExtResource( 1 )]
 position = Vector2( -21, -42 )
-Health = 3
 
 [node name="BaseBlock15" parent="." instance=ExtResource( 1 )]
 position = Vector2( -42, -21 )

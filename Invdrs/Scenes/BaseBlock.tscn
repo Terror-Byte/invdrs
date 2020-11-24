@@ -9,6 +9,7 @@ extents = Vector2( 21, 21 )
 [node name="BaseBlock" type="Area2D"]
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
+Health = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

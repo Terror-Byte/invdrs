@@ -1,8 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://HUD.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/playerShip1_green.png" type="Texture" id=2]
-
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -38,3 +37,41 @@ texture = ExtResource( 2 )
 position = Vector2( 110, 40 )
 scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 2 )
+
+[node name="StartScreen" type="Node2D" parent="."]
+
+[node name="Title" type="Label" parent="StartScreen"]
+margin_left = 362.039
+margin_top = 145.664
+margin_right = 402.039
+margin_bottom = 159.664
+text = "Invdrs"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="Label" parent="StartScreen"]
+margin_left = 289.914
+margin_top = 330.926
+margin_right = 476.914
+margin_bottom = 361.926
+text = "Arrow keys or WASD to move
+Space to shoot"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="StartScreen"]
+margin_left = 373.411
+margin_top = 443.574
+margin_right = 414.411
+margin_bottom = 463.574
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeathScreen" type="Node2D" parent="."]
+
+[node name="WinScreen" type="Node2D" parent="."]
