@@ -58,12 +58,8 @@ func fire():
 func _on_Player_area_entered(area):
 	# Play death animation
 	# Remove life
-	# Emit the hit signal, if we need it??
-	#if (area.get_parent().get_name() == "EnemyBullet"):
-	#	queue_free()
 	
 	if "EnemyBullet" in area.get_parent().get_name():
-		#queue_free()
 		emit_signal("killed")
 		$DeathSound.play()
 

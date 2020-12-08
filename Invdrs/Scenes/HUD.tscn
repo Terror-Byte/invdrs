@@ -1,77 +1,45 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/playerShip1_green.png" type="Texture" id=2]
 
-[node name="HUD" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 0.0582771
-margin_bottom = 0.0582886
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Fonts/Kenney Future.ttf"
+
+[sub_resource type="DynamicFont" id=1]
+font_data = SubResource( 2 )
+
+[node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScoreLabel" type="Label" parent="."]
 margin_left = 2.20486
-margin_top = 2.04737
-margin_right = 45.2049
-margin_bottom = 16.0474
+margin_top = 2.10565
+margin_right = 76.2049
+margin_bottom = 20.1056
+custom_fonts/font = SubResource( 1 )
 text = "Score: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Life_3" type="Sprite" parent="."]
-position = Vector2( 30, 40 )
+position = Vector2( 30, 40.0583 )
 scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 2 )
 
 [node name="Life_2" type="Sprite" parent="."]
-position = Vector2( 70, 40 )
+position = Vector2( 70, 40.0583 )
 scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 2 )
 
 [node name="Life_1" type="Sprite" parent="."]
-position = Vector2( 110, 40 )
+position = Vector2( 110, 40.0583 )
 scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 2 )
 
-[node name="StartScreen" type="Node2D" parent="."]
-
-[node name="Title" type="Label" parent="StartScreen"]
-margin_left = 362.039
-margin_top = 145.664
-margin_right = 402.039
-margin_bottom = 159.664
-text = "Invdrs"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Controls" type="Label" parent="StartScreen"]
-margin_left = 289.914
-margin_top = 330.926
-margin_right = 476.914
-margin_bottom = 361.926
-text = "Arrow keys or WASD to move
-Space to shoot"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="StartScreen"]
-margin_left = 373.411
-margin_top = 443.574
-margin_right = 414.411
-margin_bottom = 463.574
-text = "Start"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="DeathScreen" type="Node2D" parent="."]
+position = Vector2( 0, 0.0582771 )
 
 [node name="WinScreen" type="Node2D" parent="."]
+position = Vector2( 0, 0.0582771 )

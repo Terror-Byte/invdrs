@@ -245,7 +245,7 @@ position = Vector2( -135, 120 )
 [node name="Enemy_3,0" parent="." groups=[
 "row_0",
 ] instance=ExtResource( 1 )]
-position = Vector2( -90, 123.175 )
+position = Vector2( -90, 120 )
 
 [node name="Enemy_4,0" parent="." groups=[
 "row_0",
@@ -260,7 +260,7 @@ position = Vector2( 0, 120 )
 [node name="Enemy_6,0" parent="." groups=[
 "row_0",
 ] instance=ExtResource( 1 )]
-position = Vector2( 45, 121.587 )
+position = Vector2( 45, 120 )
 
 [node name="Enemy_7,0" parent="." groups=[
 "row_0",

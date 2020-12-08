@@ -1,7 +1,7 @@
 extends Node2D
 
 var direction
-export var Speed = 25
+export var Speed = 250
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,9 +11,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if direction == "up":
-		position.y -= Speed
+		position.y -= Speed * delta
 	elif direction == "down":
-		position.y += Speed
+		position.y += Speed * delta
 
 
 func set_direction(dir):
