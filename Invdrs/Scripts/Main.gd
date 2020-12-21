@@ -1,5 +1,7 @@
 extends Node2D
 
+signal game_over
+
 # Player Stuff
 var score = 0
 var lives = 3
@@ -80,3 +82,18 @@ func _on_RespawnTimer_timeout():
 func _on_Enemies_all_enemies_killed():
 	# What happens when the player "wins"?
 	print("You win!")
+
+
+func _on_MapBottom_area_entered(area):
+	print("Game over!!")
+	#emit_signal("game_over") # Things will react to this - player will stop moving, enemies will stop moving, game over screen will appears
+	
+	# TODO:
+	#  Show end screen (GAME OVER text, player score, try again button (which will reload the scene "get_tree().change_scene("res://Scenes/Main.tscn")").
+	#  PLAYER: Stop moving
+	#  
+	
+	# $Player.game_over() <-- deletes all player bullets??
+	# $Enemies.game_over() <-- deletes all enemy bullets??
+	# delete all bullets??
+	pass # Replace with function body.

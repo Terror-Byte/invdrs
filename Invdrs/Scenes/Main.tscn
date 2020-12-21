@@ -82,6 +82,7 @@ position = Vector2( 320, 450 )
 [connection signal="area_exited" from="MapEdgeLeft" to="." method="_on_MapEdgeLeft_area_exited"]
 [connection signal="area_entered" from="MapEdgeRight" to="." method="_on_MapEdgeRight_area_entered"]
 [connection signal="area_exited" from="MapEdgeRight" to="." method="_on_MapEdgeRight_area_exited"]
+[connection signal="area_entered" from="MapBottom" to="." method="_on_MapBottom_area_entered"]
 [connection signal="timeout" from="MoveTimerLongOLD" to="." method="_on_MoveTimerLong_timeout"]
 [connection signal="timeout" from="MoveTimerShortOLD" to="." method="_on_MoveTimerShort_timeout"]
 [connection signal="timeout" from="FireTimerOLD" to="." method="_on_FireTimer_timeout"]
