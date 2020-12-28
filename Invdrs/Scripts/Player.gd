@@ -11,6 +11,7 @@ var main
 
 var can_fire = true
 var alive = true
+var playing = true
 var start_position
 
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +22,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if alive == false:
+	if alive == false or playing == false:
 		return
 	
 	var velocity = Vector2()
@@ -78,3 +79,6 @@ func set_alive(in_alive):
 		position = start_position
 		hide()
 		$Collider/CollisionShape2D.set_deferred("disabled", true)
+
+func game_over():
+	playing = false

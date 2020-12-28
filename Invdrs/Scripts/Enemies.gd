@@ -13,7 +13,7 @@ var switch_dir = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$MoveTimerLong.start()
-	$FireTimer.start()
+	#$FireTimer.start()
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	for enemy in enemies:
 		enemy.connect("killed", self, "_on_Enemy_killed")
@@ -80,3 +80,8 @@ func _on_Enemy_killed():
 		# Add in check for if the special enemy exists?
 		emit_signal("all_enemies_killed")
 		print("All enemies killed! (Enemies script")
+
+func game_over():
+	$MoveTimerLong.stop()
+	$MoveTimerShort.stop()
+	$FireTimer.stop()

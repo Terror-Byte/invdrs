@@ -43,3 +43,6 @@ func move(move_direction):
 
 func move_down():
 	position.y += vertical_move_distance
+
+func game_over():
+	pass
