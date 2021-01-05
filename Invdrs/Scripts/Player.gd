@@ -12,6 +12,7 @@ var main
 var can_fire = true
 var alive = true
 var playing = true
+var invincible = false
 var start_position
 
 # Called when the node enters the scene tree for the first time.
@@ -44,6 +45,10 @@ func _process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 
+func game_over():
+	playing = false
+
+
 func fire():
 	var bullet = Bullet.instance()
 	bullet.set_name("PlayerBullet")
@@ -60,7 +65,7 @@ func _on_Player_area_entered(area):
 	# Play death animation
 	# Remove life
 	
-	if "EnemyBullet" in area.get_parent().get_name():
+	if "EnemyBullet" in area.get_parent().get_name() and invincible == false:
 		emit_signal("killed")
 		$DeathSound.play()
 
@@ -75,10 +80,15 @@ func set_alive(in_alive):
 	if alive == true:
 		show()
 		$Collider/CollisionShape2D.disabled = false
+		invincible = true
+		$RespawnInvincibilityTimer.start()
+		$Sprite/RespawnAnimation.play("Invincible")
 	else:
 		position = start_position
 		hide()
 		$Collider/CollisionShape2D.set_deferred("disabled", true)
+	
 
-func game_over():
-	playing = false
+func _on_RespawnInvincibilityTimer_timeout():
+	invincible = false
+	$Sprite/RespawnAnimation.stop()

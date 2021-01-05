@@ -23,8 +23,9 @@ func _ready():
 	randomize()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if Input.is_action_pressed("ui_cancel"):
+		get_tree().change_scene("res://Scenes/Start.tscn")
 
 func _on_MapEdgeLeft_area_entered(area):
 	if not ("Enemy" in area.get_parent().get_name()):
@@ -85,6 +86,11 @@ func _on_RespawnTimer_timeout():
 func _on_Enemies_all_enemies_killed():
 	# What happens when the player "wins"?
 	print("You win!")
+	
+	# TODO:
+	#  Stop player from moving
+	#  Delete all player bullets
+	#  Show win screen
 
 
 func _on_MapBottom_area_entered(area):
@@ -108,3 +114,4 @@ func game_over():
 	var gameOverScreen = GameOverScreenScene.instance()
 	self.add_child(gameOverScreen)
 	gameOverScreen.set_score(score)
+	get_tree().call_group("bullet", "queue_free")
