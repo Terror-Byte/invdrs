@@ -86,7 +86,32 @@ func _on_Enemy_killed():
 	if enemies.size() == 1:
 		# Add in check for if the special enemy exists?
 		emit_signal("all_enemies_killed")
-		print("All enemies killed! (Enemies script")
+		return
+	
+	# Change "speed" of enemies
+	# Initial speed is every 1 sec
+	var actual_enemy_count = enemies.size() - 1
+	match actual_enemy_count:
+		45:
+			$MoveTimerLong.wait_time = 0.85
+			print("Enemy speed is now: " + str($MoveTimerLong.wait_time))
+		35:
+			$MoveTimerLong.wait_time = 0.65
+			print("Enemy speed is now: " + str($MoveTimerLong.wait_time))
+		25:
+			$MoveTimerLong.wait_time = 0.45
+			print("Enemy speed is now: " + str($MoveTimerLong.wait_time))
+		15:
+			$MoveTimerLong.wait_time = 0.25
+			print("Enemy speed is now: " + str($MoveTimerLong.wait_time))
+		5:
+			$MoveTimerLong.wait_time = 0.05
+			print("Enemy speed is now: " + str($MoveTimerLong.wait_time))
+		1:
+			$MoveTimerLong.wait_time = 0.01
+			print("Enemy speed is now: " + str($MoveTimerLong.wait_time))
+		_:
+			pass
 
 func game_ended():
 	$MoveTimerLong.stop()

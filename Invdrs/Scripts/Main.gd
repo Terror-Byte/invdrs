@@ -27,6 +27,11 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().change_scene("res://Scenes/Start.tscn")
+		
+	if Input.is_action_just_pressed("ui_pause"):
+		#get_tree().paused = !get_tree().paused
+		# What happens when we pause?? - Player can't move or shoot, enemies can't move or shoot, bullets stop moving
+		pass
 
 func _on_MapEdgeLeft_area_entered(area):
 	if not ("Enemy" in area.get_parent().get_name()):
