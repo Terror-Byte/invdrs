@@ -50,7 +50,8 @@ margin_bottom = 51.8724
 custom_fonts/font = SubResource( 4 )
 text = "Arrow keys or WASD to move
 Space to shoot
-Escape to return to main menu"
+Escape to return to main menu
+M to mute/unmute audio"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

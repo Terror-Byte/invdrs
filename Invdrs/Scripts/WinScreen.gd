@@ -13,5 +13,6 @@ func _on_PlayAgain_pressed():
 func _on_MainMenu_pressed():
 	get_tree().change_scene("res://Scenes/Start.tscn")
 
+
 func set_score(score):
 	$ScoreLabel.text = "Score: " + str(score)

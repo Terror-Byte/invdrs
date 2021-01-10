@@ -5,6 +5,9 @@ signal killed
 #export (PackedScene) var Bullet
 var Bullet = preload("res://Scenes/Bullet.tscn")
 
+export(NodePath) var sound_controller_path
+onready var sound_controller = get_node(sound_controller_path)
+
 export var speed = 400
 var screen_size
 var main
@@ -45,7 +48,7 @@ func _process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 
-func game_over():
+func game_ended():
 	playing = false
 
 
@@ -58,7 +61,7 @@ func fire():
 	get_parent().add_child(bullet)
 	can_fire = false
 	$FireTimer.start()
-	$FireSound.play()
+	sound_controller.player_fire_sound()
 
 
 func _on_Player_area_entered(area):
@@ -67,7 +70,7 @@ func _on_Player_area_entered(area):
 	
 	if "EnemyBullet" in area.get_parent().get_name() and invincible == false:
 		emit_signal("killed")
-		$DeathSound.play()
+		sound_controller.death_sound()
 
 
 func _on_FireTimer_timeout():

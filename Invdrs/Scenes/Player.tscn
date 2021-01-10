@@ -5,7 +5,7 @@
 [ext_resource path="res://Sounds/Laser_shoot 1.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/Explosion 1.wav" type="AudioStream" id=4]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Invincible"
 loop = true
 tracks/0/type = "value"
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 77.1123
 height = 40.6719
 
@@ -35,7 +35,7 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
 [node name="RespawnAnimation" type="AnimationPlayer" parent="Sprite"]
-anims/Invincible = SubResource( 2 )
+anims/Invincible = SubResource( 1 )
 
 [node name="Collider" type="Area2D" parent="."]
 scale = Vector2( 0.5, 0.5 )
@@ -43,7 +43,7 @@ scale = Vector2( 0.5, 0.5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="FireTimer" type="Timer" parent="."]
 wait_time = 0.5

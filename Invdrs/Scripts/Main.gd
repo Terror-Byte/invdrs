@@ -10,6 +10,7 @@ var enemies_at_left_edge = 0
 var enemies_at_right_edge = 0
 
 const GameOverScreenScene = preload("res://Scenes/GameOverScreen.tscn")
+const WinScreenScene = preload("res://Scenes/WinScreen.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,7 +25,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().change_scene("res://Scenes/Start.tscn")
 
 func _on_MapEdgeLeft_area_entered(area):
@@ -80,17 +81,10 @@ func _on_Player_killed():
 
 func _on_RespawnTimer_timeout():
 	$Player.set_alive(true)
-	#$Player.show()
 
 
 func _on_Enemies_all_enemies_killed():
-	# What happens when the player "wins"?
-	print("You win!")
-	
-	# TODO:
-	#  Stop player from moving
-	#  Delete all player bullets
-	#  Show win screen
+	game_win()
 
 
 func _on_MapBottom_area_entered(area):
@@ -99,6 +93,7 @@ func _on_MapBottom_area_entered(area):
 		game_over()
 	
 	#emit_signal("game_over") # Things will react to this - player will stop moving, enemies will stop moving, game over screen will appears
+
 
 func game_over():
 	# TODO:
@@ -109,9 +104,24 @@ func game_over():
 	# $Enemies.game_over() <-- deletes all enemy bullets??
 	# delete all bullets??
 	
-	$Player.game_over()
-	$Enemies.game_over()
+	$Player.game_ended()
+	$Enemies.game_ended()
 	var gameOverScreen = GameOverScreenScene.instance()
 	self.add_child(gameOverScreen)
 	gameOverScreen.set_score(score)
+	get_tree().call_group("bullet", "queue_free")
+
+
+func game_win():
+	# What happens when the player "wins"?
+	# TODO:
+	#  Stop player from moving
+	#  Delete all player bullets
+	#  Show win screen
+	
+	$Player.game_ended()
+	$Enemies.game_ended()
+	var winScreen = WinScreenScene.instance()
+	self.add_child(winScreen)
+	winScreen.set_score(score)
 	get_tree().call_group("bullet", "queue_free")

@@ -2,6 +2,9 @@ extends Node2D
 
 signal all_enemies_killed
 
+export(NodePath) var sound_controller_path
+onready var sound_controller = get_node(sound_controller_path)
+
 # Enemy Stuff
 var current_row = 0
 var left_dir = "left"
@@ -13,7 +16,7 @@ var switch_dir = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$MoveTimerLong.start()
-	#$FireTimer.start()
+	$FireTimer.start()
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	for enemy in enemies:
 		enemy.connect("killed", self, "_on_Enemy_killed")
@@ -74,14 +77,18 @@ func _on_FireTimer_timeout():
 # Spawn the special enemy?
 
 func _on_Enemy_killed():
-	$EnemyDeathSound.play()
+	
+	# TODO Send a message to the soundcontroller
+	sound_controller.death_sound()
+	
 	var enemies = get_tree().get_nodes_in_group("enemies")
-	if enemies.size() == 0:
+	# The reason we're checking if size is 1 is because this method gets called BEFORE the enemy is killed, meaning 
+	if enemies.size() == 1:
 		# Add in check for if the special enemy exists?
 		emit_signal("all_enemies_killed")
 		print("All enemies killed! (Enemies script")
 
-func game_over():
+func game_ended():
 	$MoveTimerLong.stop()
 	$MoveTimerShort.stop()
 	$FireTimer.stop()
