@@ -5,7 +5,7 @@ signal killed
 
 
 var Bullet = preload("res://Scenes/Bullet.tscn")
-
+var ExplosionAnimation = preload("res://Scenes/ExplosionAnimation.tscn")
 
 var left_dir = "left"
 var right_dir = "right"
@@ -23,6 +23,9 @@ func _on_Enemy_area_entered(area):
 	
 	if "PlayerBullet" in parent_name:
 		emit_signal("killed")
+		var explosion = ExplosionAnimation.instance()
+		explosion.position = position
+		get_parent().add_child(explosion)
 		queue_free()
 
 
@@ -44,5 +47,5 @@ func move(move_direction):
 func move_down():
 	position.y += vertical_move_distance
 
-func game_over():
-	pass
+#func game_over():
+#	pass

@@ -4,6 +4,7 @@ signal killed
 
 #export (PackedScene) var Bullet
 var Bullet = preload("res://Scenes/Bullet.tscn")
+var ExplosionAnimation = preload("res://Scenes/ExplosionAnimation.tscn")
 
 export(NodePath) var sound_controller_path
 onready var sound_controller = get_node(sound_controller_path)
@@ -69,8 +70,11 @@ func _on_Player_area_entered(area):
 	# Remove life
 	
 	if "EnemyBullet" in area.get_parent().get_name() and invincible == false:
-		emit_signal("killed")
+		var explosion = ExplosionAnimation.instance()
+		explosion.position = position
+		get_parent().add_child(explosion)
 		sound_controller.death_sound()
+		emit_signal("killed")
 
 
 func _on_FireTimer_timeout():

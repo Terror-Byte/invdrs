@@ -73,7 +73,6 @@ func _on_Player_killed():
 	if lives <= 0:
 		print("You lose!")
 		# Stop everything and show death screen!
-		#get_tree().change_scene("res://Scenes/Start.tscn")
 		game_over()
 	else:
 		$RespawnTimer.start()
