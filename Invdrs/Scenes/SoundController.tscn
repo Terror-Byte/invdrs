@@ -1,8 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/SoundController.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/SoundController.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/Explosion 1.wav" type="AudioStream" id=2]
 [ext_resource path="res://Sounds/Laser_shoot 1.wav" type="AudioStream" id=3]
+
+
 
 [node name="SoundController" type="Node2D"]
 script = ExtResource( 1 )

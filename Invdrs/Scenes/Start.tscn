@@ -45,12 +45,15 @@ __meta__ = {
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = 2.87238
-margin_bottom = 51.8724
+margin_left = 3.5636
+margin_top = -27.4182
+margin_right = 3.5636
+margin_bottom = 99.5818
 custom_fonts/font = SubResource( 4 )
 text = "Arrow keys or WASD to move
 Space to shoot
 Escape to return to main menu
+P to pause
 M to mute/unmute audio"
 align = 1
 __meta__ = {

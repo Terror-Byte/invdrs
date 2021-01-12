@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemies.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/SoundController.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Base.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/PauseController.gd" type="Script" id=7]
+[ext_resource path="res://Sprites/pause.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 300 )
@@ -14,7 +16,6 @@ extents = Vector2( 5, 300 )
 extents = Vector2( 400, 60 )
 
 [node name="Main" type="Node2D"]
-pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
@@ -86,6 +87,15 @@ sound_controller_path = NodePath("../SoundController")
 
 [node name="SoundController" parent="." instance=ExtResource( 5 )]
 position = Vector2( 400, 300 )
+
+[node name="PauseController" type="CanvasLayer" parent="."]
+pause_mode = 2
+script = ExtResource( 7 )
+
+[node name="PauseSprite" type="Sprite" parent="PauseController"]
+position = Vector2( 400, 300 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 8 )
 [connection signal="area_entered" from="MapEdgeLeft" to="." method="_on_MapEdgeLeft_area_entered"]
 [connection signal="area_exited" from="MapEdgeLeft" to="." method="_on_MapEdgeLeft_area_exited"]
 [connection signal="area_entered" from="MapEdgeRight" to="." method="_on_MapEdgeRight_area_entered"]
