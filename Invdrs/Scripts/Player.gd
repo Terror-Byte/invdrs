@@ -73,7 +73,7 @@ func _on_Player_area_entered(area):
 		var explosion = ExplosionAnimation.instance()
 		explosion.position = position
 		get_parent().add_child(explosion)
-		sound_controller.death_sound()
+		sound_controller.player_death_sound()
 		emit_signal("killed")
 
 

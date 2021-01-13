@@ -72,6 +72,7 @@ func _on_FireTimer_timeout():
 		return
 	var enemy_index = randi() % enemies.size()	
 	enemies[enemy_index].fire()
+	sound_controller.enemy_fire_sound()
 	$FireTimer.start()
 
 # Spawn the special enemy?
@@ -79,7 +80,7 @@ func _on_FireTimer_timeout():
 func _on_Enemy_killed():
 	
 	# TODO Send a message to the soundcontroller
-	sound_controller.death_sound()
+	sound_controller.enemy_death_sound()
 	
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	# The reason we're checking if size is 1 is because this method gets called BEFORE the enemy is killed, meaning 

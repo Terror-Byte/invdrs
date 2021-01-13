@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/explosionCrunch_002_Edited.ogg-e1c945d60b98af4a44ef05e60b8bc820.oggstr"
+
+[deps]
+
+source_file="res://Sounds/Audacity Projects/explosionCrunch_002_Edited_data/e08/explosionCrunch_002_Edited.ogg"
+dest_files=[ "res://.import/explosionCrunch_002_Edited.ogg-e1c945d60b98af4a44ef05e60b8bc820.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

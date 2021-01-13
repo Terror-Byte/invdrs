@@ -46,7 +46,7 @@ scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 2 )
 
 [node name="FireTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.75
 one_shot = true
 
 [node name="FireSound" type="AudioStreamPlayer2D" parent="."]

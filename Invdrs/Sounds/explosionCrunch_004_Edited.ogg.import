@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/explosionCrunch_004_Edited.ogg-01aeca36c24b59654a59ba1432211a42.oggstr"
+
+[deps]
+
+source_file="res://Sounds/explosionCrunch_004_Edited.ogg"
+dest_files=[ "res://.import/explosionCrunch_004_Edited.ogg-01aeca36c24b59654a59ba1432211a42.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

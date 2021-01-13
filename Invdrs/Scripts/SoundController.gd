@@ -1,10 +1,5 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var is_muted = false
 
 signal muted
@@ -32,13 +27,27 @@ func _process(delta):
 func player_fire_sound():
 	if is_muted == true:
 		return
-	
+
 	$PlayerFireSound.play()
 
 
-func death_sound():
+func player_death_sound():
+	if is_muted == true:
+		return
+		
+	$PlayerDeathSound.play()
+
+
+func enemy_fire_sound():
+	if is_muted == true:
+		return
+		
+	$EnemyFireSound.play()
+
+
+func enemy_death_sound():
 	if is_muted == true:
 		return
 	
-	if $DeathSound.playing == false:
-		$DeathSound.play()
+	if $EnemyDeathSound.playing == false:
+		$EnemyDeathSound.play()
