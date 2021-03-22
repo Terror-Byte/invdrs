@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/SoundController.gd" type="Script" id=1]
+[ext_resource path="res://Sounds/laserRetro_002.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Sounds/explosionCrunch_004_Edited.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/laserSmall_004.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/explosionCrunch_002_Edited.ogg" type="AudioStream" id=5]
+
+[node name="SoundController" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="PlayerFireSound" type="AudioStreamPlayer2D" parent="." groups=[
+"sound_players",
+]]
+position = Vector2( 0, 1 )
+stream = ExtResource( 2 )
+volume_db = -15.0
+
+[node name="PlayerDeathSound" type="AudioStreamPlayer2D" parent="." groups=[
+"sound_players",
+]]
+stream = ExtResource( 5 )
+volume_db = -10.0
+
+[node name="EnemyFireSound" type="AudioStreamPlayer2D" parent="." groups=[
+"sound_players",
+]]
+stream = ExtResource( 4 )
+volume_db = -10.0
+
+[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." groups=[
+"sound_players",
+]]
+position = Vector2( 0, -1 )
+stream = ExtResource( 3 )
+volume_db = -10.0
+attenuation = 0.196146
